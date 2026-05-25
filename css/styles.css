@@ -344,6 +344,25 @@ ul, ol {
   .cursor { display: block; }
 }
 
+body.discord-gate-open .cursor {
+  z-index: 10001;
+  mix-blend-mode: normal;
+}
+
+body.discord-gate-open .cursor__dot {
+  background: var(--purple-light);
+}
+
+body.discord-gate-open .cursor__ring {
+  border-color: rgba(167, 139, 250, 0.75);
+}
+
+body.discord-gate-open .cursor.hover .cursor__ring {
+  border-color: rgba(236, 72, 153, 0.95);
+  width: 60px;
+  height: 60px;
+}
+
 .cursor__dot {
   position: absolute;
   width: 6px;
@@ -1158,7 +1177,7 @@ ul, ol {
 }
 
 .feature-card--1 .feature-card__character {
-  top: 4%;
+  top: -3%;
 }
 
 .feature-card:hover .feature-card__character {
@@ -1200,11 +1219,20 @@ ul, ol {
 }
 
 .feature-card--1 .feature-card__character img {
-  transform: translate(24px, 4px);
+  transform: translate(24px, -6px);
 }
 
 .feature-card--1:hover .feature-card__character img {
-  transform: translate(24px, -12px);
+  transform: translate(24px, -20px);
+}
+
+.feature-card--2 .feature-card__character img {
+  transform: translate(6px, 4px) scale(0.75);
+  transform-origin: top right;
+}
+
+.feature-card--2:hover .feature-card__character img {
+  transform: translate(6px, -12px) scale(0.75);
 }
 
 .feature-card__content {
@@ -2080,11 +2108,12 @@ body.discord-gate-open {
   display: grid;
   place-items: center;
   padding: 1.25rem;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .discord-gate[hidden] {
   display: none !important;
+  pointer-events: none;
 }
 
 .discord-gate--visible .discord-gate__backdrop {

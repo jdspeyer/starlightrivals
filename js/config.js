@@ -4,9 +4,9 @@
 
 const SITE_CONFIG = {
   name: "Starlight Rivals",
-  tagline: "A Discord for women who'd rather talk to girls than dudes.",
+  tagline: "a discord for women who'd rather talk to girls than dudes.",
   description:
-    "Starlight Rivals. Women only Discord. We game. We yap. No men.",
+    "starlight rivals. women only discord. we game. we yap. no men.",
 
   assets: {
     logo: "assets/logo.png",
@@ -18,110 +18,110 @@ const SITE_CONFIG = {
   discord: {
     inviteUrl: "https://discord.gg/Z8bnQyh5",
     serverId: "1481186540918018104",
-    headline: "Pull up",
+    headline: "pull up",
     subtext:
-      "Women only Discord. Play stuff, yap in voice, send clips. No guys. Just girls. Way better vibes.",
-    ranksHeadline: "Starling, Moonling, Dreamling",
+      "women only discord. play stuff, yap in voice, send clips. no guys. just girls. Way better vibes.",
+    ranksHeadline: "starling, moonling, dreamling",
     ranksIntro:
-      "Our ranks track how deep you are in the constellation. Everyone starts as a Starling when they join. Show up, game, and stick around to rise through Moonling and Dreamling.",
+      "our ranks track how deep you are in the constellation. everyone starts as a starling when they join. show up, game, and stick around to rise through moonling and dreamling.",
     ranks: [
       {
-        name: "Starling",
+        name: "starling",
         tier: "01",
         theme: "starling",
-        tagline: "First light",
-        blurb: "You just got here. Fresh face. Welcome to the squad, stargazer.",
+        tagline: "first light",
+        blurb: "you just got here. fresh face. welcome to the squad, stargazer.",
       },
       {
-        name: "Moonling",
+        name: "moonling",
         tier: "02",
         theme: "moonling",
-        tagline: "In orbit",
-        blurb: "You're a regular now. You show up, you game, you're part of the crew.",
+        tagline: "in orbit",
+        blurb: "you're a regular now. you show up, you game, you're part of the crew.",
       },
       {
         name: "Dreamling",
         tier: "03",
         theme: "dreamling",
         tagline: "Core of the cosmos",
-        blurb: "The OGs. Been here forever. You basically run the vibe at this point.",
+        blurb: "the moderators of the server. they basically run the vibe at this point... thank god.",
       },
     ],
     features: [
-      "LFG and game night channels",
-      "Clip sharing when you pop off",
-      "Voice chat that's actually fun",
-      "Events, giveaways, chaos",
+      "lfg and game night channels",
+      "clip sharing when you pop off",
+      "voice chat that's actually fun",
+      "events, chaos, and drama",
     ],
     gate: {
-      badge: "Space Cadet Check",
-      title: "Confirm before launch",
+      badge: "space cadet check",
+      title: "confirm before launch",
       body:
-        "As a space cadet boarding the Starlight spacecraft, do you identify as a woman? This is a women-only Discord — if that's not you, you'll be ejected from the craft after joining. No hard feelings, just keeping the vibes right.",
-      dismissLabel: "Abort Launch",
-      continueLabel: "Beam Me Up",
+        "as a space cadet boarding the starlight spacecraft, do you identify as a woman? this is a women-only discord — if that's not you, you'll be ejected from the craft after joining. no hard feelings, just keeping the vibes right.",
+      dismissLabel: "abort launch",
+      continueLabel: "beam me up",
     },
   },
 
   minecraft: {
-    headline: "Modded Minecraft",
+    headline: "modded minecraft",
     subtext:
-      "We run modded seasons sometimes. Fresh worlds, different modpacks, same crew. Collab with Nuggie Kingdom and other Discords. Women led on the MC side, not women only. Everyone welcome there.",
-    status: "Check Discord for the current season",
+      "we run modded seasons sometimes. fresh worlds, different modpacks, same crew. collab with nuggie kingdom and other discord servers. Women led on the MC side, not women only. Everyone welcome there.",
+    status: "check discord for the current season",
     mapPageUrl: "minecraft.html",
-    mapHeadline: "Modded Minecraft",
+    mapHeadline: "modded minecraft",
     mapSubtext:
-      "We run modded seasons sometimes. Fresh worlds, different modpacks, same crew. Collab with Nuggie Kingdom and other Discords. Women led on the MC side, not women only. Everyone welcome there.",
-    mapPlaceholderText: "Map coming soon…",
+      "we run modded seasons sometimes. fresh worlds, different modpacks, same crew. collab with nuggie kingdom and other discord servers. women led on the MC side, not women only. everyone welcome there.",
+    mapPlaceholderText: "map coming soon…",
     bluemapUrl: "",
     nuggieUrl: "https://discord.nuggiekingdom.com/",
     steps: [
-      "Join the Discord",
-      "Peep the Minecraft announcements",
-      "Grab the modpack and connect guide",
-      "Go build dumb stuff with us",
+      "join our discord or nuggie kingdom's discord",
+      "peep the announcements",
+      "grab the modpack and follow the connect guide",
+      "go build dumb stuff with us",
     ],
   },
 
   oli: {
-    name: "Oli",
+    name: "oli",
     nameDecor: "",
-    role: "Founder",
+    role: "founder",
     quote:
-      "I literally made this because I wanted to talk to women instead of men. Women are just so much hotter. That's it. That's the whole server.",
+      "i literally just made this to game with the girlies, that's it <3",
     bio:
-      "Oli runs the server. Sets up game nights. Keeps it from going feral. She's why any of this exists tbh.",
+      "oli runs the server. sets up game nights (if she is not lazy). keeps it from going feral (unless the drama is too good). she's why any of this exists tbh.",
     avatar: "assets/oli.webp",
-    tiktok: "https://www.tiktok.com/@YOUR_TIKTOK_HANDLE",
+    tiktok: "https://www.tiktok.com/@olipoppii",
   },
 
   about: {
-    headline: "Women only Discord",
+    headline: "women only discord",
     paragraphs: [
-      "Starlight Rivals is a women only gaming Discord. Ranked, cozy games, whatever. The point is playing with other women without guys in the mix.",
-      "Sound like your thing? Join the Discord. It's just women.",
+      "starlight rivals is a women only gaming discord. ranked, cozy games, whatever. the point is playing with other women without guys in the mix.",
+      "sound like your thing? join the discord. it's just women.",
     ],
     stats: [
-      { numeric: 50, suffix: "+", label: "Members" },
-      { numeric: 24, suffix: "/7", label: "Chat" },
-      { symbol: "∞", label: "Sessions" },
+      { numeric: 50, suffix: "+", label: "members" },
+      { numeric: 24, suffix: "/7", label: "chat" },
+      { symbol: "∞", label: "sessions" },
     ],
     features: [
       {
-        title: "Game together",
-        text: "Find people for Marvel Rivals, Minecraft, indies. Whatever you're on.",
+        title: "game together",
+        text: "find people for marvel rivals, minecraft, indies. whatever you're on.",
         icon: "squad",
         character: "assets/card-game-together.png",
       },
       {
-        title: "Women only",
-        text: "Discord is girls only. That's the whole point. No boys club energy.",
+        title: "women only",
+        text: "discord is girls only. that's the whole point. no boys club energy.",
         icon: "shield",
         character: "assets/card-women-only.png",
       },
       {
-        title: "Always something",
-        text: "Voice, text, events. Someone's usually around.",
+        title: "always something",
+        text: "voice, text, events. someone's usually around.",
         icon: "pulse",
         character: "assets/card-always-something.png",
       },
@@ -132,8 +132,8 @@ const SITE_CONFIG = {
   heroVideoStart: 20,
   musicVideoId: "uc1f-Msff8Q",
   musicVolume: 45,
-  heroBadge: "Women Only Discord",
-  ctaFinalText: "We're probably in voice. Just join.",
+  heroBadge: "women only discord",
+  ctaFinalText: "we're probably in voice. just join.",
 
   links: {
     twitter: "",
@@ -142,21 +142,21 @@ const SITE_CONFIG = {
   },
 
   meta: {
-    title: "Starlight Rivals | Women Only Gaming Discord",
+    title: "starlight rivals | women only gaming discord",
     description:
-      "Women only Discord for gaming together. Modded Minecraft collab with Nuggie Kingdom.",
+      "women only discord for gaming together. modded minecraft collab with nuggie kingdom.",
     themeColor: "#7c3aed",
   },
 
   preloader: {
     minDurationMs: 2500,
-    enterLabel: "Enter",
-    loadingText: "Loading the stars…",
-    readyText: "Tap enter. We're waiting.",
+    enterLabel: "enter",
+    loadingText: "loading the stars…",
+    readyText: "tap enter. we're waiting.",
   },
 
   footer: {
-    developedBy: "Nuggie Kingdom",
+    developedBy: "nuggie kingdom",
     developedByUrl: "https://discord.nuggiekingdom.com/",
   },
 };

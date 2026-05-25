@@ -119,6 +119,7 @@
 
     if (reduced || typeof gsap === "undefined") {
       gateEl.classList.add("discord-gate--visible");
+      gateEl.style.pointerEvents = "auto";
       gateEl.querySelector("[data-gate-continue]")?.focus();
       return;
     }

@@ -510,17 +510,16 @@
       x = e.clientX;
       y = e.clientY;
       gsap.set(dot, { x, y });
+      const overInteractive = e.target.closest(
+        "a, button, .magnetic, .feature-card, .discord-gate__btn, [data-gate-dismiss], [data-gate-continue]"
+      );
+      cursor.classList.toggle("hover", !!overInteractive);
     });
 
     gsap.ticker.add(() => {
       ringX += (x - ringX) * 0.15;
       ringY += (y - ringY) * 0.15;
       gsap.set(ring, { x: ringX, y: ringY });
-    });
-
-    document.querySelectorAll("a, button, .magnetic, .feature-card").forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
     });
   }
 
