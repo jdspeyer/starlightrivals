@@ -1,0 +1,157 @@
+.map-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-page .nav {
+  position: sticky;
+}
+
+.map-main {
+  flex: 1;
+  width: min(1400px, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: 2rem 0 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.map-hero {
+  margin-bottom: 1.5rem;
+}
+
+.map-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-top: 0.5rem;
+}
+
+.map-hero__sub {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  max-width: 640px;
+  line-height: 1.75;
+}
+
+.map-info {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 2.5rem;
+}
+
+.map-info .minecraft__status {
+  margin-bottom: 1.5rem;
+}
+
+.map-info .minecraft__steps {
+  margin-bottom: 1.5rem;
+}
+
+.map-info__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.map-section {
+  margin-bottom: 1rem;
+}
+
+.map-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+}
+
+.map-section__sub {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.map-frame {
+  padding: 0;
+  overflow: hidden;
+  min-height: min(75svh, 800px);
+  display: flex;
+  flex-direction: column;
+}
+
+.map-frame__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+}
+
+.map-frame__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.map-frame__dot--live {
+  background: #22c55e;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.map-frame__viewport {
+  flex: 1;
+  min-height: min(70svh, 720px);
+  position: relative;
+  background: #0a0a12;
+}
+
+.map-frame__viewport iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+.map-placeholder code {
+  padding: 0.15rem 0.4rem;
+  background: rgba(124, 58, 237, 0.15);
+  border-radius: 4px;
+  color: var(--purple-light);
+  font-size: 0.85em;
+}
+
+.map-placeholder p {
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.map-placeholder__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}

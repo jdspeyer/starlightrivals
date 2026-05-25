@@ -1,0 +1,20 @@
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Editor / tooling
+.cursor/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python venvs (used for one-off image scripts)
+.venv*/
+venv/
+
+# OS metadata
+.AppleDouble
+.LSOverride

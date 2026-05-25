@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Starlight Rivals on Discord. Women only gaming community.">
+  <meta name="theme-color" content="#7c3aed">
+  <title>Starlight Rivals | Women Gaming Together</title>
+
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="loading">
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__logo-wrap">
+        <img src="assets/logo.png" alt="" class="preloader__logo logo-img" width="72" height="72">
+      </div>
+      <p class="preloader__percent"><span id="preloaderPercent">0</span>%</p>
+      <div class="preloader__bar"><span id="preloaderBar"></span></div>
+      <p class="preloader__text" id="preloaderText">Loading the stars…</p>
+      <button type="button" class="preloader__enter btn btn--primary" id="preloaderEnter" hidden>
+        <span class="preloader__enter-label">Enter</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden YouTube music player -->
+  <div class="audio-player" id="audioPlayer" aria-hidden="true">
+    <div id="ytMusicPlayer"></div>
+  </div>
+
+  <button type="button" class="audio-toggle" id="audioToggle" aria-label="Toggle music" aria-pressed="false" hidden>
+    <span class="audio-toggle__waves" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </span>
+    <svg class="audio-toggle__icon audio-toggle__icon--on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+    <svg class="audio-toggle__icon audio-toggle__icon--off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+
+  <!-- Custom cursor (desktop) -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__frame"></div>
+  </div>
+
+  <!-- Three.js canvas -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- Grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__brand magnetic" data-magnetic>
+      <img src="assets/logo.png" alt="Starlight Rivals" class="logo-img" width="36" height="36">
+      <span class="nav__name">Starlight Rivals</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true"></div>
+  <nav class="nav__links" id="navLinks">
+    <a href="#about" class="nav__link">About</a>
+    <a href="#oli" class="nav__link">Founder</a>
+    <a href="#discord" class="nav__link">Discord</a>
+    <a href="minecraft.html" class="nav__link">Minecraft</a>
+    <a href="#" class="nav__cta magnetic btn btn--discord" id="navDiscordCta" data-magnetic>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      Join Discord
+    </a>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__video-wrap" aria-hidden="true">
+        <div class="hero__video" id="heroVideo"></div>
+        <div class="hero__video-overlay"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal-text">
+          <span class="hero__badge">Women Only Discord</span>
+        </p>
+        <h1 class="hero__title" id="heroTitle">
+          <span class="line line--starlight"><span class="reveal-word">Starlight</span></span>
+          <span class="line line--accent"><span class="reveal-word">Rivals</span></span>
+        </h1>
+        <div class="hero__shimmer" aria-hidden="true"></div>
+        <p class="hero__subtitle reveal-text" id="heroTagline">Where women game together.</p>
+        <div class="hero__orbit" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="hero__actions reveal-text">
+          <a href="#" class="btn btn--primary btn--lg magnetic" id="heroDiscordCta" data-magnetic>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Join the Discord
+          </a>
+          <a href="#about" class="btn btn--ghost btn--lg magnetic" data-magnetic>
+            Explore
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" id="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack">
+        <span>PLAY TOGETHER</span><span class="marquee__dot">✦</span>
+        <span>SHINE BRIGHT</span><span class="marquee__dot">✦</span>
+        <span>GIRLS WHO GAME</span><span class="marquee__dot">✦</span>
+        <span>STARLIGHT RIVALS</span><span class="marquee__dot">✦</span>
+        <span>PLAY TOGETHER</span><span class="marquee__dot">✦</span>
+        <span>SHINE BRIGHT</span><span class="marquee__dot">✦</span>
+        <span>GIRLS WHO GAME</span><span class="marquee__dot">✦</span>
+        <span>STARLIGHT RIVALS</span><span class="marquee__dot">✦</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label reveal-up">Our Mission</span>
+          <h2 class="section__title reveal-up" id="aboutHeadline">Built for Women Who Game</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__text">
+            <p class="about__p reveal-up" id="aboutP1"></p>
+            <p class="about__p reveal-up" id="aboutP2"></p>
+          </div>
+          <div class="about__stats" id="aboutStats"></div>
+        </div>
+        <div class="about__cards" id="aboutCards"></div>
+      </div>
+    </section>
+
+    <!-- Oli -->
+    <section class="section oli" id="oli">
+      <div class="container">
+        <div class="oli__layout">
+          <div class="oli__visual reveal-up">
+            <div class="oli__frame" id="oliFrame">
+              <img src="assets/oli-placeholder.svg" alt="" id="oliAvatar" width="400" height="400">
+            </div>
+            <div class="oli__badge magnetic" data-magnetic>
+              <span class="oli__badge-dot"></span>
+              Founder
+            </div>
+          </div>
+          <div class="oli__content">
+            <span class="section__label reveal-up">Meet the Owner</span>
+            <h2 class="section__title reveal-up">
+              Hi, I'm <span class="oli-name" id="oliName">Oli</span>
+            </h2>
+            <p class="oli__role reveal-up" id="oliRole">Founder & Community Lead</p>
+            <a href="#" class="oli__tiktok reveal-up" id="oliTiktok" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3 15.19 6.34 6.34 0 0 0 9.34 21.5a6.34 6.34 0 0 0 6.34-6.34V8.5a8.16 8.16 0 0 0 4.91 1.6V6.69z"/></svg>
+              Follow on TikTok
+            </a>
+            <blockquote class="oli__quote reveal-up">
+              <span class="oli__quote-mark">"</span>
+              <p id="oliQuote"></p>
+            </blockquote>
+            <p class="oli__bio reveal-up" id="oliBio"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discord -->
+    <section class="section discord-section" id="discord">
+      <div class="container">
+        <div class="discord__layout">
+          <div class="discord__top">
+            <div class="discord__content">
+              <span class="section__label reveal-up">Community Hub</span>
+              <h2 class="section__title reveal-up" id="discordHeadline">Join the Squad</h2>
+              <p class="discord__sub reveal-up" id="discordSub"></p>
+              <ul class="discord__features reveal-up" id="discordFeatures"></ul>
+              <a href="#" class="btn btn--discord btn--lg magnetic reveal-up" id="discordCta" data-magnetic>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                Join Discord Server
+              </a>
+            </div>
+            <div class="discord__widget-wrap reveal-up">
+              <div class="discord__widget-card glass-card">
+                <div class="discord__widget-header">
+                  <span class="discord__live-dot"></span>
+                  Live Server Preview
+                </div>
+                <div class="discord__widget-body" id="discordWidget">
+                  <p class="discord__widget-placeholder">
+                    Add your <code>serverId</code> in <code>js/config.js</code> to show the live Discord widget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="discord__ranks-block reveal-up">
+            <h3 class="discord__ranks-headline" id="discordRanksHeadline"></h3>
+            <p class="discord__ranks-intro" id="discordRanksIntro"></p>
+            <div class="discord__ranks" id="discordRanks"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section cta-final" id="join">
+      <div class="container">
+        <div class="cta-final__inner reveal-up">
+          <h2 class="cta-final__title">
+            Ready to pull up?
+          </h2>
+          <p class="cta-final__text" id="ctaFinalText">We're probably in voice. Just join.</p>
+          <a href="#" class="btn btn--primary btn--xl magnetic" id="finalDiscordCta" data-magnetic>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Join Starlight Rivals
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minecraft -->
+    <section class="section minecraft" id="minecraft">
+      <div class="container">
+        <div class="minecraft__inner glass-card reveal-up">
+          <span class="section__label">Side quest</span>
+          <h2 class="section__title" id="minecraftHeadline">Modded Minecraft Nights</h2>
+          <p class="minecraft__sub" id="minecraftSub"></p>
+          <div class="minecraft__status" id="minecraftStatus">
+            <span class="minecraft__status-pulse"></span>
+            <span id="minecraftStatusText"></span>
+          </div>
+          <ol class="minecraft__steps" id="minecraftSteps"></ol>
+          <a href="minecraft.html" class="btn btn--primary magnetic" id="minecraftMapCta" data-magnetic>
+            Explore the World Map
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#" class="btn btn--ghost magnetic" id="minecraftDiscordCta" data-magnetic>
+            Server info on Discord
+          </a>
+          <footer class="minecraft__footer">
+            <span class="minecraft__footer-label">In collab with</span>
+            <a href="#" class="minecraft__nk-link" id="nkLink" target="_blank" rel="noopener noreferrer">
+              <img src="assets/nuggie-kingdom.png" alt="Nuggie Kingdom" id="nkLogo" width="120" height="32">
+            </a>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <section class="manifesto manifesto--footer" id="manifesto">
+      <div class="manifesto__track">
+        <p class="manifesto__line">Play loud.</p>
+        <p class="manifesto__line manifesto__line--accent">Shine brighter.</p>
+        <p class="manifesto__line">Game together.</p>
+      </div>
+    </section>
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo.png" alt="" class="logo-img" width="32" height="32">
+        <span id="footerName">Starlight Rivals</span>
+      </div>
+      <p class="footer__copy">&copy; <span id="footerYear"></span> Starlight Rivals. All rights reserved.</p>
+      <p class="footer__credit">
+        Developed by <a href="#" id="footerNkCredit" target="_blank" rel="noopener noreferrer">Nuggie Kingdom</a>
+      </p>
+      <div class="footer__social" id="footerSocial"></div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="#" class="btn btn--discord btn--block" id="mobileDiscordCta">
+      Join Discord
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/text-fit.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/discord-gate.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
