@@ -88,7 +88,7 @@ const SITE_CONFIG = {
       description:
         "a starlight rivals fork of cobbleverse — the cobblemon pack everyone and their mom is playing. same cozy cobblemon loop you know, plus community features, performance tuning, and qol addons we actually want on the server. built for our crew, not a random curseforge dump.",
       downloadUrl:
-        "https://storage.googleapis.com/nuggiekingdompack/COBBLEVERSE%20x%20Starlight%201.7.0.mrpack",
+        "https://storage.googleapis.com/nuggiekingdompack/COBBLEVERSE%20x%20Starlight%201.8.0.mrpack",
       modrinthUrl: "https://modrinth.com/app",
       serverIp: "mc.starlightrivals.com",
       ramMinGb: 4,
