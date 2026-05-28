@@ -66,21 +66,72 @@ const SITE_CONFIG = {
   minecraft: {
     headline: "modded minecraft",
     subtext:
-      "we run modded seasons sometimes. fresh worlds, different modpacks, same crew. collab with nuggie kingdom and other discord servers. Women led on the MC side, not women only. Everyone welcome there.",
+      "we run modded seasons sometimes. fresh worlds, different modpacks, same crew. collab with nuggie kingdom and other discord servers. women led on the MC side, not women only. everyone welcome there.",
     status: "check discord for the current season",
     mapPageUrl: "minecraft.html",
-    mapHeadline: "modded minecraft",
-    mapSubtext:
-      "we run modded seasons sometimes. fresh worlds, different modpacks, same crew. collab with nuggie kingdom and other discord servers. women led on the MC side, not women only. everyone welcome there.",
+    mapHeadline: "minecraft",
+    mapSubtext: "grab the pack, hop on modrinth, and meet us in-game.",
     mapPlaceholderText: "map coming soon…",
-    bluemapUrl: "",
+    bluemapUrl: "http://173.240.151.165:9007/#world2:-545:87:705:150:0:0:0:1:flat",
     nuggieUrl: "https://discord.nuggiekingdom.com/",
+    musicVideoId: "YMEblRM4pGc",
     steps: [
-      "join our discord or nuggie kingdom's discord",
-      "peep the announcements",
-      "grab the modpack and follow the connect guide",
+      "join the discord",
+      "peep the minecraft announcements",
+      "grab the modpack and connect guide",
       "go build dumb stuff with us",
     ],
+    pack: {
+      name: "cobbleverse x starlight",
+      label: "current pack",
+      logo: "assets/cobbleverse-starlight.png",
+      description:
+        "a starlight rivals fork of cobbleverse — the cobblemon pack everyone and their mom is playing. same cozy cobblemon loop you know, plus community features, performance tuning, and qol addons we actually want on the server. built for our crew, not a random curseforge dump.",
+      downloadUrl:
+        "https://storage.googleapis.com/nuggiekingdompack/COBBLEVERSE%20x%20Starlight%201.7.0.mrpack",
+      modrinthUrl: "https://modrinth.com/app",
+      serverIp: "mc.starlightrivals.com",
+      ramMinGb: 4,
+      ramMaxGb: 6,
+      headerVideoId: "2tsCcWbiYgA",
+      headerVideoStart: 20,
+    },
+    connectionGuide: {
+      subtext:
+        "six steps from zero to in-game. we'll walk you through it — takes like ten minutes if modrinth behaves.",
+      steps: [
+        {
+          title: "download the pack",
+          text: "hit the button below. it'll pull the modpack file straight to your downloads folder.",
+          action: "download",
+        },
+        {
+          title: "install modrinth",
+          text: "modrinth is the launcher we use for this pack. grab it now so you're ready for the next step.",
+          action: "modrinth",
+        },
+        {
+          title: "import the modpack",
+          text: "open modrinth → click the + button → choose import modpack → select the file you just downloaded.",
+          action: null,
+        },
+        {
+          title: "check your ram",
+          text: "before you launch, bump allocated ram to at least 4–6gb in modrinth settings. cobblemon packs are hungry.",
+          action: null,
+        },
+        {
+          title: "launch the pack",
+          text: "hit play on cobbleverse x starlight in modrinth. first boot takes a minute — grab water.",
+          action: null,
+        },
+        {
+          title: "join the server",
+          text: "in minecraft: multiplayer → add server → paste the ip below → connect. see you in the overworld.",
+          action: "copyIp",
+        },
+      ],
+    },
   },
 
   oli: {

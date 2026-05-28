@@ -120,19 +120,9 @@
   }
 
   function setupHeroVideo() {
-    const wrap = document.getElementById("heroVideo");
-    const { heroVideoId, heroVideoStart } = cfg;
-    if (!heroVideoId) return;
-    const params = new URLSearchParams({
-      autoplay: "1", mute: "1", loop: "1", controls: "0", showinfo: "0",
-      rel: "0", modestbranding: "1", playsinline: "1", enablejsapi: "1",
-      playlist: heroVideoId, start: String(heroVideoStart || 0),
-    });
-    wrap.innerHTML = `<iframe
-      src="https://www.youtube-nocookie.com/embed/${heroVideoId}?${params}"
-      title="Background video"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    ></iframe>`;
+    if (typeof window.setupEmbedVideo === "function") {
+      window.setupEmbedVideo("heroVideo", cfg.heroVideoId, cfg.heroVideoStart);
+    }
   }
 
   const AUDIO_CONSENT_KEY = "sr-audio-consented";
@@ -497,47 +487,11 @@
   }
 
   function initCursor() {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    const cursor = document.getElementById("cursor");
-    const dot = cursor.querySelector(".cursor__dot");
-    const ring = cursor.querySelector(".cursor__ring");
-    document.body.classList.add("no-cursor");
-
-    let x = 0, y = 0, ringX = 0, ringY = 0;
-
-    document.addEventListener("mousemove", (e) => {
-      x = e.clientX;
-      y = e.clientY;
-      gsap.set(dot, { x, y });
-      const overInteractive = e.target.closest(
-        "a, button, .magnetic, .feature-card, .discord-gate__btn, [data-gate-dismiss], [data-gate-continue]"
-      );
-      cursor.classList.toggle("hover", !!overInteractive);
-    });
-
-    gsap.ticker.add(() => {
-      ringX += (x - ringX) * 0.15;
-      ringY += (y - ringY) * 0.15;
-      gsap.set(ring, { x: ringX, y: ringY });
-    });
+    if (typeof window.initSiteCursor === "function") window.initSiteCursor();
   }
 
   function initMagnetic() {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    document.querySelectorAll("[data-magnetic]").forEach((el) => {
-      el.addEventListener("mousemove", (e) => {
-        const rect = el.getBoundingClientRect();
-        gsap.to(el, {
-          x: (e.clientX - rect.left - rect.width / 2) * 0.25,
-          y: (e.clientY - rect.top - rect.height / 2) * 0.25,
-          duration: 0.4, ease: "power2.out",
-        });
-      });
-      el.addEventListener("mouseleave", () => {
-        gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" });
-      });
-    });
+    if (typeof window.initSiteMagnetic === "function") window.initSiteMagnetic();
   }
 
   function boot() {
